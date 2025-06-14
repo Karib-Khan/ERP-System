@@ -1,192 +1,166 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', sans-serif;
-}
-
-body {
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #f8f9fa, #e0f7fa);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(45deg, #1a1a2e, #16213e);
-    overflow: hidden;
-}
-
-.container {
-    position: relative;
-    width: 400px;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    animation: fadeIn 0.8s ease-out;
-}
-
-.container::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        to bottom right,
-        rgba(255, 255, 255, 0.1),
-        transparent
-    );
-    transform: rotate(45deg);
-    pointer-events: none;
-}
-
-h2 {
-    color: #fff;
+    height: 100vh;
+  }
+  
+  .form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    width: 92%;
+    max-width: 1250px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.input-box {
-    position: relative;
-    margin: 30px 0;
-}
-
-.input-box input {
-    width: 100%;
-    padding: 12px 0;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px 25px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #00796b;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border 0.3s;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #00796b;
     outline: none;
-    color: #fff;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-}
-
-.input-box label {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 16px;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
-
-.input-box input:focus ~ label,
-.input-box input:valid ~ label {
-    top: -5px;
-    font-size: 12px;
-    color: #00ff88;
-}
-
-.input-box input:focus {
-    border-color: #00ff88;
-}
-
-.input-box .icon {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 18px;
-}
-
-.terms {
-    margin: 20px 0;
-    font-size: 14px;
-    color: #fff;
-}
-
-.terms label input {
-    accent-color: #00ff88;
-    margin-right: 5px;
-}
-
-.terms a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.terms a:hover {
-    color: #00ff88;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background: #00ff88;
-    border: none;
-    border-radius: 25px;
-    color: #1a1a2e;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  }
+  
+   .full-width {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  
+  .role-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .role-options label {
     position: relative;
-    overflow: hidden;
-}
-
-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.5s;
-}
-
-button:hover::before {
-    left: 100%;
-}
-
-button:hover {
-    background: #00cc6d;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
-}
-
-.login-link {
-    text-align: center;
-    margin-top: 20px;
-    color: #fff;
-    font-size: 14px;
-}
-
-.login-link a {
-    color: #00ff88;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.login-link a:hover {
-    color: #00cc6d;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .role-options input[type="radio"] {
+    display: none;
+  }
+  
+  .custom-radio {
+    display: inline-block;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .role-options input[type="radio"]:checked + .custom-radio {
+    background-color: #28a745; /* Green */
+    color: white;
+    border-color: #28a745;
+  }
+  
+  
+  .submit-btn {
+    padding: 10px 30px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-height: 700px) {
+    html, body {
+      font-size: 14px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+  
+    .form-container {
+      transform: scale(0.9);
     }
+  }
+  .success-msg {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.error-msg {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.flash-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.success-msg {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.error-msg {
+  background-color: #f44336;
+  color: white;
 }

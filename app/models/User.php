@@ -3,10 +3,10 @@
 class User{
     use Model;
 
-    protected $table ='new_users';
+    protected $table ='users';
 
     protected $allowedColumns =[
-        'name','age'
+        'name','age',"dob","gender","nationality","maritial_status","address","phone","email","nid","user_id"
     ];
 
 

@@ -6,11 +6,10 @@ spl_autoload_register(function ($classname){
     }
 });
 
-//this is the file that load all the file that need to be loaded everytime the applications is started 
-
+// Load required files
 require 'config.php';
-require 'functions.php';
-require 'Database.php';
+require 'Database.php';      // Must come before functions.php
+require 'functions.php';     // Now safe to use `Database` trait
 require 'Model.php';
 require 'Controller.php';
 require 'App.php';
