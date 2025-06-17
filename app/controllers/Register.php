@@ -2,6 +2,7 @@
 class Register extends Controller {
 
     public function index() {
+        $this->requireRole("Administration","ADM");
         $user = new User();
     
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -11,20 +12,19 @@ class Register extends Controller {
             $_POST['user_id'] = $customId;
 
             try {
-                // Insert into users table
+                
                 $user->insert($_POST);
 
-                // Role-specific table insert
                 $pdo = $user->getConnection();  
                 $role = $_POST['role'];
-                $pass = '12345678';
+                $pass = password_hash("12345678",PASSWORD_DEFAULT);
 
                 if ($role === "Administration") {
-                    $stmt = $pdo->prepare("INSERT INTO admins (admin_id, pass, department) VALUES (:id, :pass, :dept)");
+                    $stmt = $pdo->prepare("INSERT INTO admins (user_id, pass, department) VALUES (:id, :pass, :dept)");
                 } elseif ($role === "HR") {
-                    $stmt = $pdo->prepare("INSERT INTO hr (hr_id, pass, department) VALUES (:id, :pass, :dept)");
+                    $stmt = $pdo->prepare("INSERT INTO hr (user_id, pass, department) VALUES (:id, :pass, :dept)");
                 } elseif ($role === "Employee") {
-                    $stmt = $pdo->prepare("INSERT INTO employee (emp_id, pass, department) VALUES (:id, :pass, :dept)");
+                    $stmt = $pdo->prepare("INSERT INTO employee (user_id, pass, department) VALUES (:id, :pass, :dept)");
                 } else {
                     throw new Exception("Invalid role.");
                 }
@@ -35,10 +35,10 @@ class Register extends Controller {
                     ':dept' => $role,
                 ]);
 
-                // Set success message
+                
                 $_SESSION['message'] = "User registered successfully!";
                 $_SESSION['message_type'] = "success";
-                functions::redirect('home');
+                functions::redirect('login');
 
             } catch (PDOException $e) {
                 $_SESSION['message'] = "Database Error: " . $e->getMessage();

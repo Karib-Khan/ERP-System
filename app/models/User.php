@@ -10,22 +10,19 @@ class User{
     ];
 
 
+ public function login($userid,$table){
+  
+    $pdo=$this->getConnection();
 
-    public function validate($data){
-        $this->errors = [];
-    
-        if (empty($data['email'])) {
-            $this->errors['email'] = "Email field is empty";
-        } else if (!filter_var($data["email"], FILTER_VALIDATE_EMAIL)) {
-            $this->errors['email'] = "Email is not valid";
-        }
-    
-        if (empty($data['password'])) {
-            $this->errors['password'] = "Password field is empty";
-        }
-    
-        return empty($this->errors);
-    }
+    $query="SELECT * FROM $table WHERE user_id = :user_id LIMIT 1";
+    $stmt=$pdo->prepare($query);
+    $stmt->execute(['user_id'=>$userid]);
+    $user=$stmt->fetch(PDO::FETCH_OBJ);
+
+    return $user;
+
+ }
+
     
 }
 
