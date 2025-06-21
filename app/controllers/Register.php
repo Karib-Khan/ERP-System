@@ -1,4 +1,8 @@
 <?php 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class Register extends Controller {
 
     public function index() {
@@ -34,6 +38,43 @@ class Register extends Controller {
                     ':pass' => $pass,
                     ':dept' => $role,
                 ]);
+
+                
+
+                require '../vendor/autoload.php'; 
+
+                $mail = new PHPMailer(true);
+
+                try {
+                    $mail->isSMTP();
+                    $mail->Host       = 'smtp.gmail.com'; 
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = 'kkarib87@gmail.com'; 
+                    $mail->Password   = 'blbwpnborltzreoc';     
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Port       = 587;
+
+                    $mail->setFrom('kkarib87@gmail.com', 'ERP Admin');
+                    $mail->addAddress($_POST['email'], $_POST['name']);
+
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Welcome to ERP System';
+                    $mail->Body    = "
+                        <h3>Hello {$_POST['name']},</h3>
+                        <p>Welcome to the ERP System!</p>
+                        <p><strong>User ID:</strong> {$_POST['user_id']}<br>
+                        <strong>Default Password:</strong> 12345678</p>
+                        <p>Please change your password after your first login.</p>
+                        <p>Regards,<br>ERP Admin Team</p>
+                    ";
+
+                    $mail->send();
+                    
+                } catch (Exception $e) {
+                    
+                    error_log("Mailer Error: " . $mail->ErrorInfo);
+                }
+
 
                 
                 $_SESSION['message'] = "User registered successfully!";

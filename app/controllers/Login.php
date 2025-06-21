@@ -45,7 +45,7 @@ class Login extends Controller {
                     $_SESSION['message'] = "Login successful!";
                     $_SESSION['message_type'] = 'success';
 
-                    functions::redirect('register');
+                    functions::redirect('home');
                     return;
                 } else {
                     $_SESSION['message'] = "Incorrect password.";
