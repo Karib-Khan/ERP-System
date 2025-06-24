@@ -44,7 +44,7 @@ class Controller{
   protected function unauthorized() {
       $_SESSION['message'] = "Unauthorized access.";
       $_SESSION['message_type'] = "error";
-      functions::redirect('unauthorized'); // or 'login'
+      functions::redirect('unauthorized');
       exit;
   }
   

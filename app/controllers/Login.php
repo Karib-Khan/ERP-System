@@ -24,7 +24,7 @@ class Login extends Controller {
 
             $user = new User();
             $userData = $user->login($userid, $table);
-            functions::show($userData);
+            
 
             if ($userData) {
                 if ($userData->state !== "Active") {
@@ -40,13 +40,27 @@ class Login extends Controller {
                         "role" => $userData->department,
                         "state" => $userData->state,
                         
+                        
                     ];
 
                     $_SESSION['message'] = "Login successful!";
                     $_SESSION['message_type'] = 'success';
 
-                    functions::redirect('home');
-                    return;
+                    if($_SESSION['USER']['role']==='Administration'){
+
+                        functions::redirect('admin');
+                        return;
+        
+                    }else if($_SESSION['USER']['role']==='Employee'){
+        
+                        functions::redirect('home');
+                        return;
+        
+                    }else if($_SESSION['USER']['role']==='HR'){
+        
+                        functions::redirect('home');
+                        return;
+                    }
                 } else {
                     $_SESSION['message'] = "Incorrect password.";
                     $_SESSION['message_type'] = 'error';
@@ -57,7 +71,10 @@ class Login extends Controller {
                 $_SESSION['message_type'] = 'error';
             }
 
-            functions::redirect('login');
+
+            
+
+            
         }
 
         $this->view("login");

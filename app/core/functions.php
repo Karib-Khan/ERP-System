@@ -42,6 +42,12 @@ class functions{
     
         return $prefix . $paddedNumber;
     }
+
+
+    public function generateCode(){
+        return random_int(100000,999999);
+        
+    }
     
 
 }

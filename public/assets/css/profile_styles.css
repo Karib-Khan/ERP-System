@@ -1,0 +1,65 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #f4f7fa;
+}
+
+header {
+    padding: 10px 20px;
+    background: #2c3e50;
+}
+
+.go-back {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.profile-content {
+    flex: 1;
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-details {
+    line-height: 1.6;
+}
+
+.profile-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.reset-password, .edit-details {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.reset-password:hover, .edit-details:hover, .go-back:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        margin: 10px;
+    }
+    .profile-actions {
+        flex-direction: column;
+    }
+    .reset-password, .edit-details {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
