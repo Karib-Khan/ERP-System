@@ -43,6 +43,10 @@ class AdminModel{
     
         
         $combined = array_merge($hrs, $admins, $employees);
+
+        usort($combined, function($a, $b) {
+            return strcmp($a['user_id'], $b['user_id']);
+        });
     
         return $combined;
     }

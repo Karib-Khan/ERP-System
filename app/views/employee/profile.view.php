@@ -28,7 +28,7 @@
             </div>
             <div class="profile-actions">
                 <a href="<?php echo ROOT?>/verification"><button class="reset-password">Reset Password</button></a>
-                
+                <a href=""><button class="edit-details">Edit Details</button></a>
             </div>
         </div>
     </div>

@@ -55,11 +55,11 @@ body {
   .employee-table td {
     padding: 15px 20px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    
   }
   
   .employee-table tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: #9b9999;
   }
   
   /* Status */
@@ -97,6 +97,34 @@ body {
   
   .details-btn:hover {
     background-color: #218838;
+  }
+
+  .task-btn {
+    background-color: #176ee0;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .task-btn:hover {
+    background-color: #0e4c9d;
+  }
+
+  .block-btn {
+    background-color: #e00d0d;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .block-btn:hover {
+    background-color: #9f0b0b;
   }
   
   /* Mobile Responsive */

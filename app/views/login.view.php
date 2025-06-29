@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/login.css" />
 </head>
 <body>
+<script src="<?php echo ROOT ?>/assets/js/flashmessage.js"></script>
 <?php if (!empty($_SESSION['message'])): ?>
 <script>
     document.addEventListener('DOMContentLoaded', function () {

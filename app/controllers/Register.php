@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 class Register extends Controller {
 
     public function index() {
-        //$this->requireRole("Administration","ADM");
+        $this->requireRole("Administration","ADM");
         $user = new User();
     
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -17,8 +17,11 @@
       <select id="statusFilter">
         <option value="">All Status</option>
         <option value="active">Active</option>
-        <option value="inactive">Inactive</option>
+        <option value="blocked">Blocked</option>
       </select>
+      <a href="<?php echo ROOT ?>/register">
+                <button class="details-btn">Add New User</button>
+      </a>
     </div>
 
     <!-- Table -->
@@ -40,7 +43,13 @@
           <td class="status"><span class="badge <?php echo strtolower($user['state']) ?>"></span><?php echo htmlspecialchars($user['state']) ?></td>
           <td><a href="<?php echo ROOT ?>/admin/userProfile/<?php echo htmlspecialchars($user['user_id']) ?>">
                 <button class="details-btn">Show Details</button>
-                </a>
+              </a>
+              <a href="<?php echo ROOT ?>/task/assign/<?php echo htmlspecialchars($user['user_id']) ?>">
+                <button class="task-btn">Assign Task</button>
+              </a>
+              <a href="<?php echo ROOT ?>/admin/userProfile/<?php echo htmlspecialchars($user['user_id']) ?>">
+                <button class="block-btn">Block User</button>
+              </a>
 
         </tr>
         <?php endforeach;?>
