@@ -14,7 +14,7 @@
             <ul>
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="<?php echo ROOT?>/admin/profile">Profile</a></li>
-                <li><a href="#">Employee List</a></li>
+                <li><a href="<?php echo ROOT?>/admin/showAllemployes">Employee List</a></li>
                 <li><a href="#">Assign Tasks</a></li>
                 <li><a href="#">Post Announcement</a></li>
                 <li><a href="#">Notifications</a></li>

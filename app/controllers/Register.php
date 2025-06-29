@@ -15,7 +15,18 @@ class Register extends Controller {
             $customId = $functions->generateCustomId($_POST['role']);
             $_POST['user_id'] = $customId;
 
+            $existingUser = $user->where(['email' => $_POST['email']]);
+
+            if ($existingUser) {
+                $_SESSION['message'] = "This email is already registered.";
+                $_SESSION['message_type'] = 'error';
+                functions::redirect('register');
+                return;
+            }
+
+
             try {
+
                 
                 $user->insert($_POST);
 
