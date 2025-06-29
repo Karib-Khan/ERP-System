@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="<?php echo ROOT?>/assets/css/signup.css">
 </head>
 <body>
+  <header><a href="<?php echo ROOT?>/admin"><button class="go-back">Go Back</button></a></header>
 <?php if (!empty($_SESSION['message'])): ?>
   <div class="flash-message <?= $_SESSION['message_type'] == 'success' ? 'success-msg' : 'error-msg' ?>">
     <?= htmlspecialchars($_SESSION['message']) ?>

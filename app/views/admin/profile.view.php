@@ -15,15 +15,15 @@
         <div class="profile-content">
             <h1>Profile</h1>
             <div class="profile-details">
-                <p><strong>Full Name:</strong> <?php echo htmlspecialchars($profile->name) ?></p>
-                <p><strong>Age:</strong><?php echo htmlspecialchars($profile->age) ?></p></p>
-                <p><strong>Date of Birth:</strong> <?php echo htmlspecialchars($profile->dob) ?></p></p>
-                <p><strong>Nationality:</strong> <?php echo htmlspecialchars($profile->nationality) ?></p></p>
-                <p><strong>Marital Status:</strong> <?php echo htmlspecialchars($profile->maritial_status) ?></p></p>
-                <p><strong>NID/Passport:</strong> <?php echo htmlspecialchars($profile->nid) ?></p></p>
-                <p><strong>Phone:</strong> <?php echo htmlspecialchars($profile->phone) ?></p></p>
-                <p><strong>Email:</strong> <?php echo htmlspecialchars($profile->email) ?></p></p>
-                <p><strong>Address:</strong> <?php echo htmlspecialchars($profile->address) ?></p></p>
+                <p><strong>Full Name:</strong> <span><?php echo htmlspecialchars($profile->name) ?></span></p>
+                <p><strong>Age: </strong><span><?php echo htmlspecialchars($profile->age) ?></span></p></p>
+                <p><strong>Date of Birth: </strong><span><?php echo htmlspecialchars($profile->dob) ?></span></p></p>
+                <p><strong>Nationality: </strong><span><?php echo htmlspecialchars($profile->nationality) ?></span></p></p>
+                <p><strong>Marital Status: </strong> <span><?php echo htmlspecialchars($profile->maritial_status) ?></span></p></p>
+                <p><strong>NID/Passport: </strong><span><?php echo htmlspecialchars($profile->nid) ?></span></p></p>
+                <p><strong>Phone: </strong> <span><?php echo htmlspecialchars($profile->phone) ?></span></p></p>
+                <p><strong>Email: </strong> <span><?php echo htmlspecialchars($profile->email) ?></span></p></p>
+                <p><strong>Address: </strong><span> <?php echo htmlspecialchars($profile->address) ?></span></p></p>
                 
             </div>
             <div class="profile-actions">

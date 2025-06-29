@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo ROOT?>/assets/css/verify_styles.css">
 </head>
 <body>
+<header><a href="<?php echo ROOT?>/admin"><button class="go-back">Go Back</button></a></header>
     <div class="verify-container">
         <h1>Verify Password</h1>
         <p>We’ve sent you a verification code. Please enter it.</p>

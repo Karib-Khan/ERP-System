@@ -7,7 +7,28 @@
   <link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/employee_list.css" />
 </head>
 <body>
-
+<header style="margin-bottom: 24px; display: flex; justify-content: flex-start; width: 100%;">
+  <a href="<?php echo ROOT?>/admin" style="text-decoration: none;">
+    <button style="
+      background: linear-gradient(90deg, #d7263d 60%, #a50021 100%);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(215, 38, 61, 0.4);
+      transition: background 0.3s ease, transform 0.2s ease;
+      letter-spacing: 1px;
+    "
+    onmouseover="this.style.background='linear-gradient(90deg, #a50021 60%, #d7263d 100%)'; this.style.transform='translateY(-3px) scale(1.05)';"
+    onmouseout="this.style.background='linear-gradient(90deg, #d7263d 60%, #a50021 100%)'; this.style.transform='none';"
+    >
+      Go Back
+    </button>
+  </a>
+</header>
   <div class="employee-container">
     <h1>All Tasks</h1>
 
@@ -31,6 +52,7 @@
           <th>Title</th>
           <th>Description</th>
           <th>Due date</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -42,9 +64,10 @@
           <td><?php echo htmlspecialchars($task['task_title']) ?></td>
           <td><?php echo htmlspecialchars($task['description']) ?></td>
           <td><?php echo htmlspecialchars($task['due_date']) ?></td>
-          <a href="<?php echo ROOT ?>/task/delete/<?php echo ($task['task_id']) ?>">
+          <td><a href="<?php echo ROOT ?>/task/delete/<?php echo ($task['task_id']) ?>">
                 <button class="block-btn">Delete Task</button>
-          </a>
+          </a></td>
+          
         </tr>
         <?php endforeach;?>
         

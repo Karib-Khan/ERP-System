@@ -1,22 +1,18 @@
-document.getElementById("loginForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+// login.js
 
-  const userId = document.getElementById("userId").value;
-  const password = document.getElementById("password").value;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
+  const roleRadios = document.querySelectorAll('input[name="role"]');
 
-  if (!userId || !password) {
-    alert("Please fill in all fields.");
-    return;
-  }
+  form.addEventListener("submit", (e) => {
+    // Ensure a role is selected
+    const roleSelected = Array.from(roleRadios).some((radio) => radio.checked);
+    if (!roleSelected) {
+      e.preventDefault();
+      alert("Please select a role before logging in.");
+      return;
+    }
 
-  // You can replace this with actual AJAX call or form submission
-  console.log("Logging in with:", { userId, password });
-
-  // For demo:
-  alert("Login attempted for user: " + userId);
-});
-document.querySelectorAll('input[name="role"]').forEach((input) => {
-  input.addEventListener("change", () => {
-    console.log("Selected Role:", input.value);
+    // Additional validation can be added here if needed
   });
 });

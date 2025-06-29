@@ -6,6 +6,9 @@
     <title>Assign Task</title>
     <link rel="stylesheet" href="<?php echo ROOT?>/assets/css/assign_task.css" />
 </head>
+<header>
+<a href="<?php echo ROOT?>/admin"><button class="go-back">Go Back</button></a>
+</header>
 <body>
 <script src="<?php echo ROOT ?>/assets/js/flashmessage.js"></script>
 <?php if (isset($_SESSION['message'])): ?>

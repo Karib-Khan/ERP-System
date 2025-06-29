@@ -7,6 +7,28 @@
   <link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/employee_list.css" />
 </head>
 <body>
+<header style="margin-bottom: 24px; display: flex; justify-content: flex-start; width: 100%;">
+  <a href="<?php echo ROOT?>/admin" style="text-decoration: none;">
+    <button style="
+      background: linear-gradient(90deg, #d7263d 60%, #a50021 100%);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(215, 38, 61, 0.4);
+      transition: background 0.3s ease, transform 0.2s ease;
+      letter-spacing: 1px;
+    "
+    onmouseover="this.style.background='linear-gradient(90deg, #a50021 60%, #d7263d 100%)'; this.style.transform='translateY(-3px) scale(1.05)';"
+    onmouseout="this.style.background='linear-gradient(90deg, #d7263d 60%, #a50021 100%)'; this.style.transform='none';"
+    >
+      Go Back
+    </button>
+  </a>
+</header>
 
   <div class="employee-container">
     <h1>All Employees</h1>
@@ -32,6 +54,9 @@
           <th>Department</th>
           <th>Status</th>
           <th>Joined</th>
+          <th></th>
+          <th>Actions</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -44,12 +69,12 @@
           <td><a href="<?php echo ROOT ?>/admin/userProfile/<?php echo htmlspecialchars($user['user_id']) ?>">
                 <button class="details-btn">Show Details</button>
               </a>
-              <a href="<?php echo ROOT ?>/task/assign/<?php echo htmlspecialchars($user['user_id']) ?>">
+          <td><a href="<?php echo ROOT ?>/task/assign/<?php echo htmlspecialchars($user['user_id']) ?>">
                 <button class="task-btn">Assign Task</button>
-              </a>
-              <a href="<?php echo ROOT ?>/admin/userProfile/<?php echo htmlspecialchars($user['user_id']) ?>">
+              </a></td>
+          <td><a href="<?php echo ROOT ?>/admin/userProfile/<?php echo htmlspecialchars($user['user_id']) ?>">
                 <button class="block-btn">Block User</button>
-              </a>
+              </a></td>
 
         </tr>
         <?php endforeach;?>

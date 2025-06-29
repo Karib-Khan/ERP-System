@@ -1,41 +1,65 @@
+// dashboard.js
+
+// Example: Simple Chart.js setup for the canvas with id "myChart"
 document.addEventListener("DOMContentLoaded", () => {
   const ctx = document.getElementById("myChart").getContext("2d");
-  new Chart(ctx, {
+
+  const myChart = new Chart(ctx, {
     type: "line",
     data: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
       datasets: [
         {
-          label: "Dataset 1",
-          data: [50, 80, 60, 90, 70],
-          borderColor: "orange",
-          fill: false,
-        },
-        {
-          label: "Dataset 2",
-          data: [30, 50, 40, 70, 60],
-          borderColor: "green",
-          fill: false,
-        },
-        {
-          label: "Dataset 3",
-          data: [20, 40, 30, 50, 40],
-          borderColor: "red",
-          fill: false,
+          label: "Visitors",
+          data: [120, 190, 300, 250, 320, 400, 450],
+          backgroundColor: "rgba(255, 106, 0, 0.3)",
+          borderColor: "#ff6a00",
+          borderWidth: 3,
+          fill: true,
+          tension: 0.3,
+          pointRadius: 5,
+          pointBackgroundColor: "#ff6a00",
         },
       ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: "#ff6a00",
+            font: {
+              weight: "600",
+            },
+          },
+          grid: {
+            color: "rgba(255, 106, 0, 0.15)",
+          },
+        },
+        x: {
+          ticks: {
+            color: "#ff6a00",
+            font: {
+              weight: "600",
+            },
+          },
+          grid: {
+            display: false,
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: "#ff6a00",
+            font: {
+              weight: "700",
+            },
+          },
+        },
+      },
     },
-  });
-
-  const sidebar = document.querySelector(".sidebar");
-  sidebar.addEventListener("mouseover", () => {
-    sidebar.style.width = "250px";
-  });
-  sidebar.addEventListener("mouseout", () => {
-    if (window.innerWidth <= 768) sidebar.style.width = "60px";
   });
 });

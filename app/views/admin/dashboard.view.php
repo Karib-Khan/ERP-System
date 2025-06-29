@@ -13,7 +13,7 @@
         <nav class="sidebar">
             <div class="logo">Admin</div>
             <ul>
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="<?php echo ROOT?>/admin/dashboard">Home</a></li>
                 <li><a href="<?php echo ROOT?>/admin/profile">Profile</a></li>
                 <li><a href="<?php echo ROOT?>/admin/showAllemployes">Employee List</a></li>
                 <li><a href="<?php echo ROOT?>/register">Add User</a></li>
@@ -26,14 +26,10 @@
         <main class="main-content">
             <header>
                 <div class="user-info">
-                    <img src="https://via.placeholder.com/40" alt="User">
-                    <span>John Doe <span class="status">Online</span></span>
+                    <img src="<?php echo ROOT?>/assets/img/admin.jpg" alt="User">
+                    <span><?php echo $_SESSION['USER']['user_id']?> <span class="status">Online</span></span>
                 </div>
-                <div class="header-icons">
-                    <span class="icon">🔔</span>
-                    <span class="icon">💬</span>
-                    <span class="icon">?</span>
-                </div>
+               
             </header>
             <section class="cards">
                 <div class="card">Welcome <span>2500</span></div>

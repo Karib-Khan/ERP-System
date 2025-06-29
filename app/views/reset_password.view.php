@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo ROOT?>/assets/css/reset_styles.css">
 </head>
 <body>
+<header><a href="<?php echo ROOT?>/admin"><button class="go-back">Go Back</button></a></header>
     
     <div class="reset-container">
         <h1>Reset Password</h1>

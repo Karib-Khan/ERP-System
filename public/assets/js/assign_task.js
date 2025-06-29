@@ -1,80 +1,60 @@
+// assign_task.js
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("taskForm");
-  const result = document.getElementById("result");
+  const resultSection = document.getElementById("result");
 
+  // Simple client-side validation
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    clearErrors();
 
-    const title = form.title.value.trim();
-    const description = form.description.value.trim();
-    const duration = form.duration.value.trim();
-    const status = form.status.value;
+    // Clear previous errors
+    form
+      .querySelectorAll(".error-message")
+      .forEach((el) => (el.textContent = ""));
+    resultSection.textContent = "";
 
     let valid = true;
 
-    if (!title) {
-      showError("title", "Title is required.");
+    // Validate title
+    const titleInput = form.title;
+    if (!titleInput.value.trim()) {
+      showError(titleInput, "Title is required");
       valid = false;
     }
 
-    if (!description) {
-      showError("description", "Description is required.");
+    // Validate description
+    const descInput = form.description;
+    if (!descInput.value.trim()) {
+      showError(descInput, "Description is required");
       valid = false;
     }
 
-    if (!duration || isNaN(duration) || Number(duration) <= 0) {
-      showError("duration", "Please enter a valid duration greater than 0.");
+    // Validate duration
+    const durationInput = form.duration;
+    const durationValue = parseFloat(durationInput.value);
+    if (!durationInput.value || isNaN(durationValue) || durationValue <= 0) {
+      showError(durationInput, "Duration must be a positive number");
       valid = false;
     }
 
-    if (!status) {
-      showError("status", "Please select a status.");
-      valid = false;
-    }
+    if (!valid) return;
 
-    if (!valid) {
-      showResult("Please fix the errors above and try again.", "error");
-      return;
-    }
+    // If valid, you can submit form or show success message
+    // Here, just simulate success message
+    resultSection.textContent = "Task assigned successfully!";
+    resultSection.style.color = "#21b573";
 
-    // Simulate task assignment (e.g., send to server)
-    const taskData = {
-      title,
-      description,
-      duration: Number(duration),
-      status,
-      assignedAt: new Date().toISOString(),
-    };
-
-    // For demo, just show success message and clear form
-    showResult(`Task "${taskData.title}" assigned successfully!`, "success");
-    form.reset();
+    // Optional: reset form except assigned_to (readonly)
+    form.title.value = "";
+    form.description.value = "";
+    form.duration.value = "";
   });
 
-  function showError(fieldId, message) {
-    const input = form[fieldId];
-    const errorMessage = input.parentElement.querySelector(".error-message");
-    errorMessage.textContent = message;
-    input.classList.add("input-error");
-  }
-
-  function clearErrors() {
-    const errorMessages = form.querySelectorAll(".error-message");
-    errorMessages.forEach((em) => (em.textContent = ""));
-
-    const inputs = form.querySelectorAll("input, textarea, select");
-    inputs.forEach((input) => input.classList.remove("input-error"));
-
-    result.style.display = "none";
-    result.textContent = "";
-    result.className = "result";
-  }
-
-  function showResult(message, type) {
-    result.textContent = message;
-    result.className = `result ${type}`;
-    result.style.display = "block";
-    result.focus();
+  function showError(input, message) {
+    const errorEl = input.parentElement.querySelector(".error-message");
+    if (errorEl) {
+      errorEl.textContent = message;
+    }
   }
 });
