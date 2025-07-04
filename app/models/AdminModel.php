@@ -68,6 +68,40 @@ class AdminModel{
         
 
     }
+    public function toggleUserState($user_id) {
+        $pdo = $this->getConnection();
+    
+        
+        if (str_starts_with($user_id, 'ADM')) {
+            $table = 'admins';
+        } elseif (str_starts_with($user_id, 'HRM')) {
+            $table = 'hr';
+        } elseif (str_starts_with($user_id, 'EMP')) {
+            $table = 'employee';
+        } else {
+            throw new Exception("Invalid user ID format");
+        }
+    
+        
+        $stmt = $pdo->prepare("SELECT state FROM $table WHERE user_id = :user_id LIMIT 1");
+        $stmt->execute(['user_id' => $user_id]);
+        $user = $stmt->fetch(PDO::FETCH_OBJ);
+    
+        if (!$user) {
+            throw new Exception("User not found");
+        }
+    
+        $newState = ($user->state === 'Active') ? 'Blocked' : 'Active';
+    
+        
+        $update = $pdo->prepare("UPDATE $table SET state = :state WHERE user_id = :user_id");
+        $update->execute([
+            'state' => $newState,
+            'user_id' => $user_id
+        ]);
+    }
+    
+    
     
 
 }

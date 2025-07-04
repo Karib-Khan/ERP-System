@@ -137,7 +137,8 @@ body, html {
 /* Buttons in table rows */
 .details-btn,
 .task-btn,
-.block-btn {
+.block-btn
+.active-btn {
   border: none;
   border-radius: 30px;
   padding: 8px 18px;
@@ -177,6 +178,7 @@ body, html {
   background: linear-gradient(90deg, #a50021 60%, #d7263d 100%);
   transform: translateY(-2px) scale(1.05);
 }
+
 
 
 /* Responsive */
@@ -227,4 +229,4 @@ body, html {
     width: 100%;
     margin: 6px 0 0 0;
   }
-}
+}  

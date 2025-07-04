@@ -72,11 +72,22 @@
           <td><a href="<?php echo ROOT ?>/task/assign/<?php echo htmlspecialchars($user['user_id']) ?>">
                 <button class="task-btn">Assign Task</button>
               </a></td>
-          <td><a href="<?php echo ROOT ?>/admin/userProfile/<?php echo htmlspecialchars($user['user_id']) ?>">
-                <button class="block-btn">Block User</button>
-              </a></td>
+      
+              <td>
+          <?php if ($user['state'] === 'Active'): ?>
+              <a href="<?php echo ROOT ?>/admin/toggleUserStatus/<?php echo htmlspecialchars($user['user_id']) ?>">
+                  <button class="block-btn">Block User</button>
+              </a>
+          <?php else: ?>
+              <a href="<?php echo ROOT ?>/admin/toggleUserStatus/<?php echo htmlspecialchars($user['user_id']) ?>">
+                  <button class="activate-btn">Activate User</button>
+              </a>
+          <?php endif; ?>
+        </td>
+
 
         </tr>
+        
         <?php endforeach;?>
       </tbody>
     </table>

@@ -36,6 +36,23 @@ public function userProfile($user_id){
        }
 
 
+public function toggleUserStatus($user_id) {
+        try {
+            $user = new AdminModel(); 
+            $user->toggleUserState($user_id);
+    
+            $_SESSION['message'] = "User status updated successfully!";
+            $_SESSION['message_type'] = 'success';
+        } catch (Exception $e) {
+            $_SESSION['message'] = "Error: " . $e->getMessage();
+            $_SESSION['message_type'] = 'error';
+        }
+        $this->showAllemployes();
+        
+    }
+    
+
+
 }
 
 

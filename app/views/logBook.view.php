@@ -173,7 +173,7 @@
                     <th>Caller</th>
                     <th>Status</th>
                     <th>Created At</th>
-                    <th></th>
+                    <th>C:\Users\K4R1B\AppData\Local/ngrok/ngrok.yml</th>
                     <th>Action</th>
                 </tr>
             </thead>
