@@ -52,5 +52,4 @@ ERP/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/erp.git
-   cd erp
+   git clone https://github.com/Karib-Khan/ERP-System.git
