@@ -19,7 +19,7 @@
                 <li><a href="<?php echo ROOT?>/register">Add User</a></li>
                 <li><a href="#">Post Announcement</a></li>
                 <li><a href="<?php echo ROOT?>/task/showTasks">Task List</a></li>
-                <li><a href="#">Video Call</a></li>
+                <li><a href="<?php echo ROOT?>/videoCall">Video Call</a></li>
                 <li><a href="<?php echo ROOT?>/logout">Logout</a></li>
             </ul>
         </nav>

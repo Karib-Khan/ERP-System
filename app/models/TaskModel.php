@@ -46,6 +46,19 @@ public function deleteById($task_id){
 
 }
 
+public function TasksById($user_id) {
+    $pdo = $this->getConnection();
+    $query = "SELECT * FROM tasks WHERE assigned_to=:assigned_to";
+
+    $stmt = $pdo->prepare($query);
+    if ($stmt->execute(['assigned_to'=>$user_id])) {
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    }
+
+    return []; 
+}
+
+
 
 
 }

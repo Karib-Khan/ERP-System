@@ -10,7 +10,7 @@
     
     <div class="profile-container">
         <header>
-            <a href="<?php echo ROOT?>/admin"><button class="go-back">Go Back</button></a>
+            <a href="<?php echo ROOT?>/employee"><button class="go-back">Go Back</button></a>
         </header>
         <div class="profile-content">
             <h1>Profile</h1>
@@ -28,7 +28,7 @@
             </div>
             <div class="profile-actions">
                 <a href="<?php echo ROOT?>/verification"><button class="reset-password">Reset Password</button></a>
-                <a href=""><button class="edit-details">Edit Details</button></a>
+                <a href="<?php echo ROOT ?>/userpdf/generate/<?php echo $profile->user_id ?>" target="_blank"><button class="edit-details">Print Details</button></a>
             </div>
         </div>
     </div>

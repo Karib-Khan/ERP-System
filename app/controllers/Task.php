@@ -55,6 +55,12 @@ class Task extends Controller{
         $this->view('task_list',['tasks'=>$allTasks]);
     }
 
+    public function ShowTaskById($user_id){
+        $task=new TaskModel();
+        $allTasks=$task->TasksById($user_id);
+        $this->view('employee/employee_task_list',['tasks'=>$allTasks]);
+    }
+
 
 }
 

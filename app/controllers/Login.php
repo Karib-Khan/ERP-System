@@ -53,12 +53,12 @@ class Login extends Controller {
         
                     }else if($_SESSION['USER']['role']==='Employee'){
         
-                        functions::redirect('home');
+                        functions::redirect('employee');
                         return;
         
                     }else if($_SESSION['USER']['role']==='HR'){
         
-                        functions::redirect('home');
+                        functions::redirect('hr');
                         return;
                     }
                 } else {
