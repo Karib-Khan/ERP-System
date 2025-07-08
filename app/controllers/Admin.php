@@ -3,6 +3,10 @@
 class Admin extends Controller{
 
 public function index(){
+    if(!isset($_SESSION['USER'])){
+        functions::redirect('login');
+        return;
+    }
         $this->requireRole('Administration','ADM');
         $this->view('admin/dashboard');
 

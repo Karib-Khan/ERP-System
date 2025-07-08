@@ -2,65 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>User Login</title>
-  <link rel="stylesheet" href="<?php echo ROOT ?>/assets/css/login.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<script src="<?php echo ROOT ?>/assets/js/flashmessage.js"></script>
-<?php if (!empty($_SESSION['message'])): ?>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        showFlashMessage("<?= addslashes($_SESSION['message']) ?>", "<?= $_SESSION['message_type'] ?? 'info' ?>");
-    });
-</script>
-<?php unset($_SESSION['message'], $_SESSION['message_type']); ?>
-<?php endif; ?>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center px-4">
 
+  <!-- Flash Message Container -->
+  <div id="flash-message-container" class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 hidden min-w-[300px] rounded-md px-6 py-3 text-center font-semibold text-white"></div>
 
-<div id="flash-message-container" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-    z-index: 1000; display: none; min-width: 300px; padding: 10px 20px; border-radius: 5px; text-align: center; font-weight: bold;">
-</div>
+  <div class="login-container bg-white shadow-lg rounded-lg max-w-md w-full p-8">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Login</h2>
 
+    <form id="loginForm" method="post" action="<?php echo ROOT ?>/login" class="space-y-6">
 
+      <!-- Role Select -->
+      <fieldset>
+        <legend class="text-gray-700 font-medium mb-3">Select Role:</legend>
+        <div class="flex gap-4 justify-center">
+          <?php 
+            $roles = ['admin' => 'Admin', 'employee' => 'Employee', 'hr' => 'HR'];
+            foreach ($roles as $value => $label): 
+          ?>
+            <div>
+              <input 
+                type="radio" 
+                id="role_<?= $value ?>" 
+                name="role" 
+                value="<?= $value ?>" 
+                class="hidden peer" 
+                required 
+              />
+              <label 
+                for="role_<?= $value ?>" 
+                class="cursor-pointer rounded-lg border border-gray-300 px-5 py-3 text-gray-700 font-medium
+                       peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600
+                       transition select-none block text-center"
+              >
+                <?= $label ?>
+              </label>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </fieldset>
 
-  <div class="login-container">
-    <h2>Login</h2>
-    <form id="loginForm" method="post" action="<?php echo ROOT?>/login">
-    <div class="role-select">
-    <label>Select Role:</label>
-    <div class="role-options">
-      <input type="radio" id="admin" name="role" value="admin" hidden />
-      <label for="admin" class="role-box">Admin</label>
-
-      <input type="radio" id="employee" name="role" value="employee" hidden />
-      <label for="employee" class="role-box">Employee</label>
-
-      <input type="radio" id="hr" name="role" value="hr" hidden />
-      <label for="hr" class="role-box">HR</label>
-    </div>
-  </div>
-
-      <div class="input-group">
-        <label for="userId">User ID</label>
-        <input type="text" id="userId" name="userId" required />
+      <!-- User ID -->
+      <div>
+        <label for="userId" class="block text-gray-700 font-medium mb-1">User ID</label>
+        <input
+          type="text"
+          id="userId"
+          name="userId"
+          required
+          class="w-full rounded border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+          autocomplete="username"
+        />
       </div>
 
-      <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required />
+      <!-- Password -->
+      <div>
+        <label for="password" class="block text-gray-700 font-medium mb-1">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          class="w-full rounded border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+          autocomplete="current-password"
+        />
       </div>
 
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded shadow transition"
+      >
+        Login
+      </button>
 
+      <p class="text-center text-gray-600 mt-4">
+        Forgot Password? 
+        <a href="<?php echo ROOT ?>/register" class="text-blue-600 hover:underline font-semibold">Click Here</a>
+      </p>
 
-      <button type="submit" class="login-btn">Login</button>
-
-      <p class="signup-link">Forgot Password? <a href="<?php echo ROOT ?>/register">Click Here</a></p>
     </form>
   </div>
 
-  <script src="<?php echo ROOT ?>/assets/js/login.js"></script>
   <script src="<?php echo ROOT ?>/assets/js/flashmessage.js"></script>
 
+  <?php if (!empty($_SESSION['message'])): ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      showFlashMessage("<?= addslashes($_SESSION['message']) ?>", "<?= $_SESSION['message_type'] ?? 'info' ?>");
+    });
+  </script>
+  <?php unset($_SESSION['message'], $_SESSION['message_type']); ?>
+  <?php endif; ?>
 </body>
 </html>
