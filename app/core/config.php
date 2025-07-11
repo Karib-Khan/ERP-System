@@ -22,15 +22,32 @@
 
 
 
-define('ROOT', rtrim((isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']), '/'));
+// define('ROOT', rtrim((isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']), '/'));
 
-// Use environment variables or fallback to local dev defaults
-define('DBHOST', getenv('DB_HOST') ?: 'localhost');
-define('DBNAME', getenv('DB_NAME') ?: 'erp-system');
-define('DBUSER', getenv('DB_USER') ?: 'root');
-define('DBPASS', getenv('DB_PASS') ?: '');
+// // Use environment variables or fallback to local dev defaults
+// define('DBHOST', getenv('DB_HOST') ?: 'localhost');
+// define('DBNAME', getenv('DB_NAME') ?: 'erp-system');
+// define('DBUSER', getenv('DB_USER') ?: 'root');
+// define('DBPASS', getenv('DB_PASS') ?: '');
 
-define("DEBUG", true);
+// define("DEBUG", true);
+
+try {
+    $options = [
+        PDO::MYSQL_ATTR_SSL_CA => '/etc/ssl/certs/ca-certificates.crt',
+        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false, // optionally true for full cert validation
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ];
+
+    $pdo = new PDO(
+        "mysql:host=" . DBHOST . ";port=4018;dbname=" . DBNAME . ";charset=utf8mb4",
+        DBUSER,
+        DBPASS,
+        $options
+    );
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
 
 
 ?>
