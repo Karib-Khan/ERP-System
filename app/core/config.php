@@ -26,7 +26,7 @@ define('ROOT', rtrim((isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_S
 
 // Use environment variables or fallback to local dev defaults
 define('DBHOST', getenv('DB_HOST') ?: 'localhost');
-define('DBNAME', getenv('DB_NAME') ?: 'erp_system');
+define('DBNAME', getenv('DB_NAME') ?: 'erp-system');
 define('DBUSER', getenv('DB_USER') ?: 'root');
 define('DBPASS', getenv('DB_PASS') ?: '');
 

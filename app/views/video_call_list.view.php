@@ -70,7 +70,7 @@
                   </span>
                 </td>
                 <td class="px-4 py-3">
-                  <a href="<?php echo ROOT ?>/videoCall/call/<?php echo htmlspecialchars($user['user_id']) ?>">
+                  <a target="_blank" href="<?php echo ROOT ?>/videoCall/call/<?php echo htmlspecialchars($user['user_id']) ?>">
                     <button class="bg-blue-600 text-white px-4 py-1.5 rounded hover:bg-blue-700 transition">
                       Start Video Call
                     </button>
